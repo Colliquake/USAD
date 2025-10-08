@@ -56,7 +56,7 @@ class Usad(nn.Module):
         W2_p2 = self.decoder2(self.encoder(W1))
 
         loss_AE1 = (1 / n) * (torch.mean((x - W1) ** 2)) + (1 - (1 / n)) * (torch.mean((x - W2_p2) ** 2))
-        loss_AE2 = (1 / n) * (torch.mean((x - W2) ** 2)) + (1 - (1 / n)) * (torch.mean((x - W2_p2) ** 2))
+        loss_AE2 = (1 / n) * (torch.mean((x - W2) ** 2)) - (1 - (1 / n)) * (torch.mean((x - W2_p2) ** 2))
 
         return (loss_AE1, loss_AE2)
     
