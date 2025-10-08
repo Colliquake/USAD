@@ -5,7 +5,7 @@ class MlpBlock(nn.Module):
     def __init__(self, in_size, out_size):
         super().__init__()
         self.block = nn.Sequential(
-            nn.Linear(in_size, out_size, bias=True),
+            nn.Linear(in_size, out_size),
             nn.ReLU()
         )
 
@@ -32,7 +32,7 @@ class Decoder(nn.Module):
         self.linear1 = MlpBlock(latent_size, int(out_size / 4))
         self.linear2 = MlpBlock(int(out_size / 4), int(out_size / 2))
         self.linear3 = nn.Sequential(
-            nn.Linear(int(out_size / 2), out_size, bias=True),
+            nn.Linear(int(out_size / 2), out_size),
             nn.Sigmoid()
         )
 
